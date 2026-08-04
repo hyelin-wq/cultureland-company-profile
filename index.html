@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>2026 컬쳐랜드 소개서</title>
+<style>
+  :root {
+    --sidebar-w: 300px;
+    --accent: #ff6a3d;
+    --bg: #0f1115;
+    --panel: #171a21;
+    --text: #e8e9ec;
+    --muted: #9aa0ab;
+    --border: #2a2e37;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+  #sidebar {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: var(--sidebar-w);
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    padding: 22px 0 40px;
+    z-index: 10;
+  }
+  #sidebar .brand {
+    padding: 0 22px 18px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 12px;
+  }
+  #sidebar .brand .k { color: var(--accent); font-weight: 700; font-size: 12px; letter-spacing: .12em; }
+  #sidebar .brand h1 { font-size: 16px; line-height: 1.4; margin: 6px 0 0; font-weight: 700; }
+  #sidebar ul { list-style: none; margin: 0; padding: 0 10px; }
+  #sidebar .toc-top > a { font-weight: 600; }
+  #sidebar .toc-group { margin-top: 6px; }
+  #sidebar .toc-link {
+    display: block;
+    padding: 9px 12px;
+    border-radius: 8px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  #sidebar .toc-heading { font-weight: 700; }
+  #sidebar .toc-sub { list-style: none; margin: 2px 0 8px; padding: 0 0 0 14px; border-left: 1px solid var(--border); }
+  #sidebar .toc-sub .toc-link { font-size: 13px; color: var(--muted); padding: 7px 12px; }
+  #sidebar .toc-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
+  #sidebar .toc-link.active { background: var(--accent); color: #1a1a1a; font-weight: 700; }
+  #sidebar .toc-sub .toc-link.active { color: #1a1a1a; }
+  #sidebar .footer-note {
+    padding: 16px 22px 0;
+    margin-top: 18px;
+    border-top: 1px solid var(--border);
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  #main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    padding: 28px 32px 80px;
+    max-width: 1100px;
+  }
+  .page-block {
+    position: relative;
+    margin-bottom: 26px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #000;
+    scroll-margin-top: 20px;
+  }
+  .page-block img { display: block; width: 100%; height: auto; }
+  .page-num {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background: rgba(0,0,0,0.55);
+    color: #fff;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    letter-spacing: .04em;
+  }
+
+  #toggle-btn {
+    display: none;
+  }
+
+  @media (max-width: 860px) {
+    :root { --sidebar-w: 260px; }
+    #sidebar { transform: translateX(-100%); transition: transform .25s ease; box-shadow: 2px 0 24px rgba(0,0,0,.5); }
+    #sidebar.open { transform: translateX(0); }
+    #main { margin-left: 0; padding: 70px 16px 60px; }
+    #toggle-btn {
+      display: block;
+      position: fixed;
+      top: 14px; left: 14px; z-index: 20;
+      background: var(--accent);
+      color: #1a1a1a;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-weight: 700;
+      font-size: 13px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<button id="toggle-btn" onclick="document.getElementById('sidebar').classList.toggle('open')">☰ 목차</button>
+
+<nav id="sidebar">
+  <div class="brand">
+    <div class="k">COMPANY INTRODUCTION</div>
+    <h1>2026 컬쳐랜드<br/>소개서</h1>
+  </div>
+  <ul>
+<li class="toc-top"><a href="#page-01" class="toc-link" data-page="1">표지</a></li>
+<li class="toc-top"><a href="#page-02" class="toc-link" data-page="2">인트로</a></li>
+<li class="toc-top"><a href="#page-03" class="toc-link" data-page="3">01. 회사 소개</a></li>
+<li class="toc-top"><a href="#page-04" class="toc-link" data-page="4">02. 연혁</a></li>
+<li class="toc-top"><a href="#page-05" class="toc-link" data-page="5">03. 사업영역</a></li>
+<li class="toc-group">
+  <a href="#page-06" class="toc-link toc-heading" data-page="6">04. 상품권</a>
+  <ul class="toc-sub">
+    <li><a href="#page-06" class="toc-link" data-page="6">컬쳐랜드상품권</a></li>
+    <li><a href="#page-07" class="toc-link" data-page="7">스마트문화상품권</a></li>
+  </ul>
+</li>
+<li class="toc-group">
+  <a href="#page-08" class="toc-link toc-heading" data-page="8">05. 컬쳐랜드 플랫폼</a>
+  <ul class="toc-sub">
+    <li><a href="#page-08" class="toc-link" data-page="8">회원 데이터</a></li>
+    <li><a href="#page-09" class="toc-link" data-page="9">회원 상세 데이터</a></li>
+    <li><a href="#page-10" class="toc-link" data-page="10">컬쳐캐쉬 Culture Cash</a></li>
+    <li><a href="#page-11" class="toc-link" data-page="11">포인트 제휴</a></li>
+    <li><a href="#page-12" class="toc-link" data-page="12">결제수단 제휴</a></li>
+  </ul>
+</li>
+<li class="toc-top"><a href="#page-13" class="toc-link" data-page="13">06. 컬쳐랜드 비즈몰</a></li>
+<li class="toc-top"><a href="#page-14" class="toc-link" data-page="14">07. 리워드 광고 플랫폼</a></li>
+<li class="toc-group">
+  <a href="#page-15" class="toc-link toc-heading" data-page="15">08. 주요 제휴사</a>
+  <ul class="toc-sub">
+    <li><a href="#page-15" class="toc-link" data-page="15">포인트전환·PG사·판매처</a></li>
+    <li><a href="#page-16" class="toc-link" data-page="16">게임콘텐츠·쇼핑도서·오프라인결제</a></li>
+  </ul>
+</li>
+<li class="toc-top"><a href="#page-17" class="toc-link" data-page="17">09. 맺음말</a></li>
+  </ul>
+  <div class="footer-note">
+    © (주)한국문화진흥 All Rights Reserved.<br/>
+    문의: help@cultureland.co.kr · 1577-2111
+  </div>
+</nav>
+
+<main id="main">
+<section class="page-block" id="page-01" data-page="1">
+      <img src="pages/page-01.jpg" alt="페이지 1" loading="lazy" />
+      <div class="page-num">1 / 17</div>
+    </section>
+<section class="page-block" id="page-02" data-page="2">
+      <img src="pages/page-02.jpg" alt="페이지 2" loading="lazy" />
+      <div class="page-num">2 / 17</div>
+    </section>
+<section class="page-block" id="page-03" data-page="3">
+      <img src="pages/page-03.jpg" alt="페이지 3" loading="lazy" />
+      <div class="page-num">3 / 17</div>
+    </section>
+<section class="page-block" id="page-04" data-page="4">
+      <img src="pages/page-04.jpg" alt="페이지 4" loading="lazy" />
+      <div class="page-num">4 / 17</div>
+    </section>
+<section class="page-block" id="page-05" data-page="5">
+      <img src="pages/page-05.jpg" alt="페이지 5" loading="lazy" />
+      <div class="page-num">5 / 17</div>
+    </section>
+<section class="page-block" id="page-06" data-page="6">
+      <img src="pages/page-06.jpg" alt="페이지 6" loading="lazy" />
+      <div class="page-num">6 / 17</div>
+    </section>
+<section class="page-block" id="page-07" data-page="7">
+      <img src="pages/page-07.jpg" alt="페이지 7" loading="lazy" />
+      <div class="page-num">7 / 17</div>
+    </section>
+<section class="page-block" id="page-08" data-page="8">
+      <img src="pages/page-08.jpg" alt="페이지 8" loading="lazy" />
+      <div class="page-num">8 / 17</div>
+    </section>
+<section class="page-block" id="page-09" data-page="9">
+      <img src="pages/page-09.jpg" alt="페이지 9" loading="lazy" />
+      <div class="page-num">9 / 17</div>
+    </section>
+<section class="page-block" id="page-10" data-page="10">
+      <img src="pages/page-10.jpg" alt="페이지 10" loading="lazy" />
+      <div class="page-num">10 / 17</div>
+    </section>
+<section class="page-block" id="page-11" data-page="11">
+      <img src="pages/page-11.jpg" alt="페이지 11" loading="lazy" />
+      <div class="page-num">11 / 17</div>
+    </section>
+<section class="page-block" id="page-12" data-page="12">
+      <img src="pages/page-12.jpg" alt="페이지 12" loading="lazy" />
+      <div class="page-num">12 / 17</div>
+    </section>
+<section class="page-block" id="page-13" data-page="13">
+      <img src="pages/page-13.jpg" alt="페이지 13" loading="lazy" />
+      <div class="page-num">13 / 17</div>
+    </section>
+<section class="page-block" id="page-14" data-page="14">
+      <img src="pages/page-14.jpg" alt="페이지 14" loading="lazy" />
+      <div class="page-num">14 / 17</div>
+    </section>
+<section class="page-block" id="page-15" data-page="15">
+      <img src="pages/page-15.jpg" alt="페이지 15" loading="lazy" />
+      <div class="page-num">15 / 17</div>
+    </section>
+<section class="page-block" id="page-16" data-page="16">
+      <img src="pages/page-16.jpg" alt="페이지 16" loading="lazy" />
+      <div class="page-num">16 / 17</div>
+    </section>
+<section class="page-block" id="page-17" data-page="17">
+      <img src="pages/page-17.jpg" alt="페이지 17" loading="lazy" />
+      <div class="page-num">17 / 17</div>
+    </section>
+</main>
+
+<script>
+  const links = Array.from(document.querySelectorAll('.toc-link'));
+  const blocks = Array.from(document.querySelectorAll('.page-block'));
+  const linkByPage = {};
+  links.forEach(l => {
+    const p = l.getAttribute('data-page');
+    if (!linkByPage[p]) linkByPage[p] = [];
+    linkByPage[p].push(l);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const page = entry.target.getAttribute('data-page');
+        links.forEach(l => l.classList.remove('active'));
+        const exact = linkByPage[page];
+        if (exact) exact.forEach(l => l.classList.add('active'));
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+
+  blocks.forEach(b => observer.observe(b));
+
+  links.forEach(l => l.addEventListener('click', () => {
+    document.getElementById('sidebar').classList.remove('open');
+  }));
+</script>
+
+</body>
+</html>
